@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <script>
-  var l = window.location;
-  l.replace(
-    l.protocol + '//' + l.host + l.pathname.split('/').slice(0, 2).join('/') +
-    '/?p=' + encodeURIComponent(l.pathname.slice(1) + l.search) + l.hash
+  var base = '/creeks-cafe';
+  var path = window.location.pathname;
+  var route = path.startsWith(base) ? path.slice(base.length) : path;
+  window.location.replace(
+    window.location.origin + base + '/?p=' + encodeURIComponent(route.replace(/^\//, '') + window.location.search) + window.location.hash
   );
 </script>
 </head>
